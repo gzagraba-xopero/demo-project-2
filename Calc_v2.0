@@ -1,4 +1,4 @@
-# Version 2: Bug Fix
+# Version 3: Improved User Interaction
 
 def add_numbers(a, b):
     if isinstance(a, (int, float)) and isinstance(b, (int, float)):
@@ -6,11 +6,18 @@ def add_numbers(a, b):
     else:
         return None
 
+def get_user_input():
+    try:
+        num1 = float(input("Enter the first number: "))
+        num2 = float(input("Enter the second number: "))
+        return num1, num2
+    except ValueError:
+        return None, None
+
 if __name__ == "__main__":
-    num1 = 5
-    num2 = "3"  # Intentional bug: Providing a string instead of a number
-    result = add_numbers(num1, num2)
-    if result is not None:
+    num1, num2 = get_user_input()
+    if num1 is not None and num2 is not None:
+        result = add_numbers(num1, num2)
         print(f"The sum of {num1} and {num2} is {result}")
     else:
         print("Invalid input. Please provide valid numbers.")
