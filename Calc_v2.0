@@ -1,10 +1,16 @@
-# Version 1: Basic Implementation
+# Version 2: Bug Fix
 
 def add_numbers(a, b):
-    return a + b
+    if isinstance(a, (int, float)) and isinstance(b, (int, float)):
+        return a + b
+    else:
+        return None
 
 if __name__ == "__main__":
     num1 = 5
-    num2 = 3
+    num2 = "3"  # Intentional bug: Providing a string instead of a number
     result = add_numbers(num1, num2)
-    print(f"The sum of {num1} and {num2} is {result}")
+    if result is not None:
+        print(f"The sum of {num1} and {num2} is {result}")
+    else:
+        print("Invalid input. Please provide valid numbers.")
